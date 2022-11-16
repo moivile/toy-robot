@@ -22,19 +22,19 @@ namespace Domain.Entities
 
             var newX = State.X;
             var newY = State.Y;
-            if (State.Direction == DirectionEnum.North)
+            if (State.Direction == Direction.North)
             {
                 ++newY;
             }
-            else if (State.Direction == DirectionEnum.East)
+            else if (State.Direction == Direction.East)
             {
                 ++newX;
             }
-            else if (State.Direction == DirectionEnum.South)
+            else if (State.Direction == Direction.South)
             {
                 --newY;
             }
-            else if (State.Direction == DirectionEnum.West)
+            else if (State.Direction == Direction.West)
             {
                 --newX;
             }
@@ -55,7 +55,7 @@ namespace Domain.Entities
                 return _stateIsNullFailureResult;
             }
 
-            var newDirection = (DirectionEnum)(State.Direction == 0 ? 3 : (int)State.Direction - 1);
+            var newDirection = (Direction)(State.Direction == 0 ? 3 : (int)State.Direction - 1);
             var newState = RobotState.Create(State.X, State.Y, newDirection);
             State = newState.Value;
 
@@ -69,7 +69,7 @@ namespace Domain.Entities
                 return _stateIsNullFailureResult;
             }
 
-            var newDirection = (DirectionEnum)((int)State.Direction == 3 ? 0 : (int)State.Direction + 1);
+            var newDirection = (Direction)((int)State.Direction == 3 ? 0 : (int)State.Direction + 1);
             var newState = RobotState.Create(State.X, State.Y, newDirection);
             State = newState.Value;
 

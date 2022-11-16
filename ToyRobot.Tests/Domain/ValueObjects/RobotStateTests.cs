@@ -8,8 +8,8 @@ namespace ToyRobot.Tests.Domain.ValueObjects
     public class RobotStateTests
     {
         [Theory]
-        [InlineData(-1, 1, DirectionEnum.North)]
-        public void X_Should_Be_Positive(int x, int y, DirectionEnum direction)
+        [InlineData(-1, 1, Direction.North)]
+        public void X_Should_Be_Positive(int x, int y, Direction direction)
         {
             // Arrange
 
@@ -21,8 +21,8 @@ namespace ToyRobot.Tests.Domain.ValueObjects
         }
 
         [Theory]
-        [InlineData(5, 1, DirectionEnum.North)]
-        public void X_Should_Be_Less_Than_AxisWidth(int x, int y, DirectionEnum direction)
+        [InlineData(5, 1, Direction.North)]
+        public void X_Should_Be_Less_Than_AxisWidth(int x, int y, Direction direction)
         {
             // Arrange
 
@@ -39,7 +39,7 @@ namespace ToyRobot.Tests.Domain.ValueObjects
             // Arrange
             const int x = 1;
             const int y = 2;
-            const DirectionEnum direction = DirectionEnum.East;
+            const Direction direction = Direction.East;
 
             // Act
             var state1 = RobotState.Create(x, y, direction);
@@ -51,16 +51,16 @@ namespace ToyRobot.Tests.Domain.ValueObjects
         }
 
         [Theory]
-        [InlineData(2, 2, DirectionEnum.East)]
-        [InlineData(1, 3, DirectionEnum.East)]
-        [InlineData(1, 2, DirectionEnum.North)]
+        [InlineData(2, 2, Direction.East)]
+        [InlineData(1, 3, Direction.East)]
+        [InlineData(1, 2, Direction.North)]
 
-        public void Robot_States_Are_Not_Equal_If_They_Values_Are_Not_Equal(int x1, int y1, DirectionEnum direction1)
+        public void Robot_States_Are_Not_Equal_If_They_Values_Are_Not_Equal(int x1, int y1, Direction direction1)
         {
             // Arrange
             const int x2 = 1;
             const int y2 = 2;
-            const DirectionEnum direction2 = DirectionEnum.East;
+            const Direction direction2 = Direction.East;
 
             // Act
             var state1 = RobotState.Create(x1, y1, direction1);

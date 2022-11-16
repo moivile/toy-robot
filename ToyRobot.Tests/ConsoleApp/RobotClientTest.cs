@@ -19,11 +19,11 @@ namespace ToyRobot.Tests.ConsoleApp
         }
 
         [Theory]
-        [InlineData("PLACE 2,2,NORTH", 2, 2, DirectionEnum.North)]
-        [InlineData("Place 1,0,East", 1, 0, DirectionEnum.East)]
-        [InlineData("place 3,2,south", 3, 2, DirectionEnum.South)]
-        [InlineData("place 2,0,west", 2, 0, DirectionEnum.West)]
-        public void RobotClient_Should_Perform_Place_Command(string input, int expX, int expY, DirectionEnum expDirection)
+        [InlineData("PLACE 2,2,NORTH", 2, 2, Direction.North)]
+        [InlineData("Place 1,0,East", 1, 0, Direction.East)]
+        [InlineData("place 3,2,south", 3, 2, Direction.South)]
+        [InlineData("place 2,0,west", 2, 0, Direction.West)]
+        public void RobotClient_Should_Perform_Place_Command(string input, int expX, int expY, Direction expDirection)
         {
             // Arrange
             var sut = _fixture.CreateSut();
@@ -139,7 +139,7 @@ namespace ToyRobot.Tests.ConsoleApp
 
         public RobotClientFixture WithInitializedRobotState()
         {
-            Robot.Setup(x => x.State).Returns(RobotState.Create(0, 0, DirectionEnum.North).Value);
+            Robot.Setup(x => x.State).Returns(RobotState.Create(0, 0, Direction.North).Value);
             return this;
         }
     }

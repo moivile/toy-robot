@@ -10,16 +10,16 @@ namespace Domain.ValueObjects
         public const int AXIS_WIDTH = 5;
         public int X { get; }
         public int Y { get; }
-        public DirectionEnum Direction { get; }
+        public Direction Direction { get; }
 
-        private RobotState(int x, int y, DirectionEnum direction)
+        private RobotState(int x, int y, Direction direction)
         {
             X = x;
             Y = y;
             Direction = direction;
         }
 
-        public static Result<RobotState> Create(int x, int y, DirectionEnum direction)
+        public static Result<RobotState> Create(int x, int y, Direction direction)
         {
             if (x < 0 || 4 < x)
             {

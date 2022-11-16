@@ -28,7 +28,7 @@ namespace ConsoleApp
             {
                 var x = int.Parse(match.Groups[1].Value);
                 var y = int.Parse(match.Groups[2].Value);
-                var direction = Enum.Parse<DirectionEnum>(match.Groups[3].Value, true);
+                var direction = Enum.Parse<Direction>(match.Groups[3].Value, true);
 
                 var newState = RobotState.Create(x, y, direction);
 
