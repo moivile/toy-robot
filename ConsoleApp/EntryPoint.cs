@@ -13,7 +13,7 @@ namespace ConsoleApp
 
         public void MainRun()
         {
-            Console.WriteLine("Please enter your robot commands (e.g. PLACE 1,2,EAST etc):");
+            Console.WriteLine("Please enter your robot commands (e.g. PLACE 1,2,EAST etc) or enter EXIT:");
             var input = Console.ReadLine();
 
             while (input != null && !input.Equals("exit", StringComparison.OrdinalIgnoreCase))
