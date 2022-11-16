@@ -2,6 +2,7 @@
 using Domain.Enums;
 using Domain.ValueObjects;
 using FluentAssertions;
+using Xunit;
 
 namespace ToyRobot.Tests.Domain.Entities
 {

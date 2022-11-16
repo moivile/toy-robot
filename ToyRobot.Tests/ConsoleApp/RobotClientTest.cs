@@ -5,6 +5,7 @@ using Domain.Services;
 using Domain.ValueObjects;
 using FluentAssertions;
 using Moq;
+using Xunit;
 
 namespace ToyRobot.Tests.ConsoleApp
 {
@@ -63,7 +64,7 @@ namespace ToyRobot.Tests.ConsoleApp
             var sut = _fixture.WithInitializedRobotState().CreateSut();
 
             // Act
-            var result = sut.RunCommand(input);
+            sut.RunCommand(input);
 
             // Assert
             _fixture.Robot.Verify(x => x.Move());
@@ -79,7 +80,7 @@ namespace ToyRobot.Tests.ConsoleApp
             var sut = _fixture.WithInitializedRobotState().CreateSut();
 
             // Act
-            var result = sut.RunCommand(input);
+            sut.RunCommand(input);
 
             // Assert
             _fixture.Robot.Verify(x => x.Left());
@@ -95,7 +96,7 @@ namespace ToyRobot.Tests.ConsoleApp
             var sut = _fixture.WithInitializedRobotState().CreateSut();
 
             // Act
-            var result = sut.RunCommand(input);
+            sut.RunCommand(input);
 
             // Assert
             _fixture.Robot.Verify(x => x.Right());
@@ -111,7 +112,7 @@ namespace ToyRobot.Tests.ConsoleApp
             var sut = _fixture.WithInitializedRobotState().CreateSut();
 
             // Act
-            var result = sut.RunCommand(input);
+            sut.RunCommand(input);
 
             // Assert
             var expectedMessage = $"Output: {sut.State.X},{sut.State.Y},{sut.State.Direction}";

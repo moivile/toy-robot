@@ -1,4 +1,5 @@
-﻿using Domain.Enums;
+﻿using System.Collections.Generic;
+using Domain.Enums;
 using Domain.Primitives;
 using Domain.Shared;
 
@@ -6,7 +7,7 @@ namespace Domain.ValueObjects
 {
     public class RobotState : ValueObject
     {
-        public const int axisWidth = 5;
+        public const int AXIS_WIDTH = 5;
         public int X { get; }
         public int Y { get; }
         public DirectionEnum Direction { get; }
@@ -24,14 +25,14 @@ namespace Domain.ValueObjects
             {
                 return Result.Failure<RobotState>(new Error(
                     "RobotState.X.OutOfRange",
-                    $"RobotState.X is less than 0 or more than {axisWidth - 1}."));
+                    $"RobotState.X is less than 0 or more than {AXIS_WIDTH - 1}."));
             }
 
             if (y < 0 || 4 < y)
             {
                 return Result.Failure<RobotState>(new Error(
                     "RobotState.Y.OutOfRange",
-                    $"RobotState.Y is less than 0 or more than {axisWidth - 1}."));
+                    $"RobotState.Y is less than 0 or more than {AXIS_WIDTH - 1}."));
             }
 
             return new RobotState(x, y, direction);

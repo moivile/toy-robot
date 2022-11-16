@@ -1,6 +1,7 @@
 ﻿using Domain.Enums;
 using Domain.ValueObjects;
 using FluentAssertions;
+using Xunit;
 
 namespace ToyRobot.Tests.Domain.ValueObjects
 {
@@ -36,9 +37,9 @@ namespace ToyRobot.Tests.Domain.ValueObjects
         public void Robot_States_Are_Equal_If_They_Values_Are_Equal()
         {
             // Arrange
-            var x = 1;
-            var y = 2;
-            var direction = DirectionEnum.East;
+            const int x = 1;
+            const int y = 2;
+            const DirectionEnum direction = DirectionEnum.East;
 
             // Act
             var state1 = RobotState.Create(x, y, direction);
@@ -57,9 +58,9 @@ namespace ToyRobot.Tests.Domain.ValueObjects
         public void Robot_States_Are_Not_Equal_If_They_Values_Are_Not_Equal(int x1, int y1, DirectionEnum direction1)
         {
             // Arrange
-            var x2 = 1;
-            var y2 = 2;
-            var direction2 = DirectionEnum.East;
+            const int x2 = 1;
+            const int y2 = 2;
+            const DirectionEnum direction2 = DirectionEnum.East;
 
             // Act
             var state1 = RobotState.Create(x1, y1, direction1);

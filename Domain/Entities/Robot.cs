@@ -6,45 +6,43 @@ namespace Domain.Entities
 {
     public class Robot: IRobot
     {
-        private RobotState? _state { get; set; }
-
-        public RobotState? State => _state;
+        public RobotState? State { get; private set; }
 
         public void Place(RobotState newState)
         {
-            _state = newState;
+            State = newState;
         }
 
         public Result Move()
         {
-            if (_state is null)
+            if (State is null)
             {
-                return StateIsNullFailureResult;
+                return _stateIsNullFailureResult;
             }
 
-            var newX = _state.X;
-            var newY = _state.Y;
-            if (_state.Direction == DirectionEnum.North)
+            var newX = State.X;
+            var newY = State.Y;
+            if (State.Direction == DirectionEnum.North)
             {
                 ++newY;
             }
-            else if (_state.Direction == DirectionEnum.East)
+            else if (State.Direction == DirectionEnum.East)
             {
                 ++newX;
             }
-            else if (_state.Direction == DirectionEnum.South)
+            else if (State.Direction == DirectionEnum.South)
             {
                 --newY;
             }
-            else if (_state.Direction == DirectionEnum.West)
+            else if (State.Direction == DirectionEnum.West)
             {
                 --newX;
             }
 
-            var newState = RobotState.Create(newX, newY, _state.Direction);
+            var newState = RobotState.Create(newX, newY, State.Direction);
             if (newState.IsSuccess)
             {
-                _state = newState.Value;
+                State = newState.Value;
                 return Result.Success();
             }
             return Result.Failure(newState.Error);
@@ -52,33 +50,33 @@ namespace Domain.Entities
 
         public Result Left()
         {
-            if (_state is null)
+            if (State is null)
             {
-                return StateIsNullFailureResult;
+                return _stateIsNullFailureResult;
             }
 
-            var newDirection = (DirectionEnum)(_state.Direction == 0 ? 3 : (int)_state.Direction - 1);
-            var newState = RobotState.Create(_state.X, _state.Y, newDirection);
-            _state = newState.Value;
+            var newDirection = (DirectionEnum)(State.Direction == 0 ? 3 : (int)State.Direction - 1);
+            var newState = RobotState.Create(State.X, State.Y, newDirection);
+            State = newState.Value;
 
             return Result.Success();
         }
 
         public Result Right()
         {
-            if (_state is null)
+            if (State is null)
             {
-                return StateIsNullFailureResult;
+                return _stateIsNullFailureResult;
             }
 
-            var newDirection = (DirectionEnum)((int)_state.Direction == 3 ? 0 : (int)_state.Direction + 1);
-            var newState = RobotState.Create(_state.X, _state.Y, newDirection);
-            _state = newState.Value;
+            var newDirection = (DirectionEnum)((int)State.Direction == 3 ? 0 : (int)State.Direction + 1);
+            var newState = RobotState.Create(State.X, State.Y, newDirection);
+            State = newState.Value;
 
             return Result.Success();
         }
 
-        private readonly Result StateIsNullFailureResult = Result.Failure(new Error(
+        private readonly Result _stateIsNullFailureResult = Result.Failure(new Error(
                 "Robot.RobotState.NullReference",
                 $"State has not been initialized."));
     }

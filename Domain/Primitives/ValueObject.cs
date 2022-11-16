@@ -1,4 +1,8 @@
-﻿namespace Domain.Primitives
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Domain.Primitives
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {

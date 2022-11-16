@@ -1,6 +1,7 @@
-﻿using Domain.Services;
+﻿using System;
+using Domain.Services;
 
-namespace Infrastructure.Servicies
+namespace Infrastructure.Services
 {
     public class ReportService : IReportService
     {

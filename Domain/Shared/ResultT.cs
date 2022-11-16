@@ -1,4 +1,6 @@
-﻿namespace Domain.Shared
+﻿using System;
+
+namespace Domain.Shared
 {
     public class Result<TValue> : Result
     {

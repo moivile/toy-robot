@@ -1,7 +1,7 @@
 ﻿using ConsoleApp;
 using Domain.Entities;
 using Domain.Services;
-using Infrastructure.Servicies;
+using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 

@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp
+﻿using System;
+
+namespace ConsoleApp
 {
     public class EntryPoint
     {
@@ -14,7 +16,7 @@
             Console.WriteLine("Please enter your robot commands (e.g. PLACE 1,2,EAST etc):");
             var input = Console.ReadLine();
 
-            while (!input.Equals("exit", StringComparison.OrdinalIgnoreCase))
+            while (input != null && !input.Equals("exit", StringComparison.OrdinalIgnoreCase))
             {
                 _robotClient.RunCommand(input);
                 input = Console.ReadLine();
